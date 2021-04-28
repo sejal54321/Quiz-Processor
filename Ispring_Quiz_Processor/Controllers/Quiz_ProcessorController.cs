@@ -57,6 +57,8 @@ namespace Ispring_Quiz_Processor.Controllers
                     XmlContent = Request.Form["dr"];
                     quiz.UserName = Request.Form["USER_NAME"];
                     quiz.UserEmail = Request.Form["USER_EMAIL"];
+                    quiz.UserId = Request.Form["USER_ID"];
+                    quiz.Title = Request.Form["qt"];
 
                     if (XmlContent != "")
                     {

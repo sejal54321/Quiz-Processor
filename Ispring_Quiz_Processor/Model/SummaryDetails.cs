@@ -10,6 +10,8 @@ namespace Ispring_Quiz_Processor.Model
         public Int64 Id { get; set; }
         public string UserName { get; set; }
         public string UserEmail { get; set; }
+        public string UserId { get; set; }
+        public string Title { get; set; }
         public Nullable<int> TotalQuestion { get; set; }
         public Nullable<int> AnsweredQuestion { get; set; }
         public DateTime Date { get; set; }
