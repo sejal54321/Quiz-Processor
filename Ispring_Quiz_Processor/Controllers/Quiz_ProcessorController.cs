@@ -340,11 +340,24 @@ namespace Ispring_Quiz_Processor.Controllers
                                                 que.QuizQuestion = Qtnlst.ChildNodes[0].InnerText;
 
 
-                                                int uid = Convert.ToInt32(Qtnlst.ChildNodes[2].ChildNodes[1].Attributes["userAnswerIndex"].Value);
-                                                int cid = Convert.ToInt32(Qtnlst.ChildNodes[2].ChildNodes[1].Attributes["correctAnswerIndex"].Value);
+                                                foreach(XmlNode item in Qtnlst.ChildNodes[2])
+                                                {
+                                                    if (item.LocalName == "blank")
+                                                    {
+                                                        int uid = Convert.ToInt32(item.Attributes["userAnswerIndex"].Value);
+                                                        int cid = Convert.ToInt32(item.Attributes["correctAnswerIndex"].Value);
 
-                                                que.UserSelection = Convert.ToString(Qtnlst.ChildNodes[2].ChildNodes[1].ChildNodes[uid].InnerText);
-                                                que.CorrectAnswer = Convert.ToString(Qtnlst.ChildNodes[2].ChildNodes[1].ChildNodes[cid].InnerText);
+
+                                                        que.UserSelection = Convert.ToString(item.ChildNodes[uid].InnerText);
+                                                        que.CorrectAnswer = Convert.ToString(item.ChildNodes[cid].InnerText);   
+                                                    }
+                                                }
+
+                                                //int uid = Convert.ToInt32(Qtnlst.ChildNodes[2].ChildNodes[1].Attributes["userAnswerIndex"].Value);
+                                                //int cid = Convert.ToInt32(Qtnlst.ChildNodes[2].ChildNodes[1].Attributes["correctAnswerIndex"].Value);
+
+                                                //que.UserSelection = Convert.ToString(Qtnlst.ChildNodes[2].ChildNodes[1].ChildNodes[uid].InnerText);
+                                                //que.CorrectAnswer = Convert.ToString(Qtnlst.ChildNodes[2].ChildNodes[1].ChildNodes[cid].InnerText);
 
                                                 QuestionDetail.Add(que);
 
